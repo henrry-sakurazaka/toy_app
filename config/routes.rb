@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'hello/index'
   resources :microposts
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -13,6 +14,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :users
+  
   root 'hello#index'
 end

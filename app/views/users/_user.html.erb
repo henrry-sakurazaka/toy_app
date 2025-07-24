@@ -8,5 +8,13 @@
     <strong>Email:</strong>
     <%= user.email %>
   </p>
+  <% user.microposts.each do |micropost| %>
+    <p>
+      <strong>Comment:</strong>
+    </p>
+      <%= micropost.content %>
+    <p>
+    </p>
+  <% end %>
 
 </div>
