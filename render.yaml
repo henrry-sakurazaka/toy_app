@@ -1,1 +1,9 @@
-bundle install && bundle exec rails db:migrate
+
+services:
+  - type: web
+    name: your-app-name
+    env: ruby
+    buildCommand: |
+      bundle install
+      bundle exec rails db:migrate
+    startCommand: bundle exec puma -C config/puma.rb
