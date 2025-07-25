@@ -20,7 +20,7 @@ gem 'pg', '~> 1.5'
 group :development, :test do
   gem 'reline', '0.5.10'
   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
-  gem 'sqlite3', '~> 1.6.1'
+  gem 'sqlite3', '~> 2.7.3'
 end
 
 group :development do
