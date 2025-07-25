@@ -23,19 +23,39 @@ test:
 
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
+# production:
+#   primary:
+#     <<: *default
+#     database: storage/production.sqlite3
+#   cache:
+#     <<: *default
+#     database: storage/production_cache.sqlite3
+#     migrations_paths: db/cache_migrate
+#   queue:
+#     <<: *default
+#     database: storage/production_queue.sqlite3
+#     migrations_paths: db/queue_migrate
+#   cable:
+#     <<: *default
+#     database: storage/production_cable.sqlite3
+#     migrations_paths: db/cable_migrate
+
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: toy_app_db_zsfn
+#   username: toy_app_db_zsfn_user
+#   password: <%= ENV['DATABASE_PASSWORD'] %>
+#   host: dpg-d21eaffgi27c73dqmtpg-a
+#   port: 5432
+#   pool: 5
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
 production:
-  primary:
-    <<: *default
-    database: storage/production.sqlite3
-  cache:
-    <<: *default
-    database: storage/production_cache.sqlite3
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *default
-    database: storage/production_queue.sqlite3
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *default
-    database: storage/production_cable.sqlite3
-    migrations_paths: db/cable_migrate
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+
